@@ -1,18 +1,110 @@
 //landing page
+// function firstQuestion() {
+//   let question1 = document.createElement("h1");
+//   question1.textContent = "Insert real question here.";
+//   document.body.appendChild(question1);
+// }
+let questions = [
+  {
+    question: "insert question here",
+    answers: ["a1", "a2", "a3", "a4"],
+    correctA: 2,
+  },
+  {
+    question: "insert question here",
+    answers: ["a1", "a2", "a3", "a4"],
+    correctA: 2,
+  },
+  {
+    question: "insert question here",
+    answers: ["a1", "a2", "a3", "a4"],
+    correctA: 2,
+  },
+  {
+    question: "insert question here",
+    answers: ["a1", "a2", "a3", "a4"],
+    correctA: 2,
+  },
+];
+let qIndex = 0;
+function firstQuestion(event) {
+  event.stopPropagation();
+  let question1 = document.createElement("h1");
+  let answers = document.createElement("ol");
+  let answer1 = document.createElement("li");
+  let answer2 = document.createElement("li");
+  let answer3 = document.createElement("li");
+  let answer4 = document.createElement("li");
+
+  answer1.setAttribute("class", "button");
+  answer2.setAttribute("class", "button");
+  answer3.setAttribute("class", "button");
+  answer4.setAttribute("class", "button");
+
+  question1.textContent = "Insert real question here.";
+  answer1.textContent = "Insert real answer here";
+  answer2.textContent = "Insert real answer here";
+  answer3.textContent = "Insert real answer here";
+  answer4.textContent = "Insert real answer here";
+
+  document.body.appendChild(question1);
+  question1.appendChild(answers);
+  answers.appendChild(answer1);
+  answers.appendChild(answer2);
+  answers.appendChild(answer3);
+  answers.appendChild(answer4);
+}
+
 function landingPage() {
+  //create document elements
   var quizTitle = document.createElement("h1");
   var description = document.createElement("p");
   var highScores = document.createElement("p");
   var startButton = document.createElement("button");
+
+  // add element text content
   highScores.textContent = "High Scores";
   description.textContent = "blahblahblah";
   quizTitle.textContent = "Coding Quiz Challenge";
   startButton.textContent = "Start Quiz";
+
+  // append elements to body
   document.body.appendChild(highScores);
   document.body.appendChild(quizTitle);
   quizTitle.appendChild(description);
   description.appendChild(startButton);
+
+  // function firstQuestion(event) {
+  //   // event.stopPropagation();
+  //   let question1 = document.createElement("h1");
+  //   let answers = document.createElement("ol");
+  //   let answer1 = document.createElement("li");
+  //   let answer2 = document.createElement("li");
+  //   let answer3 = document.createElement("li");
+  //   let answer4 = document.createElement("li");
+
+  //   answer1.setAttribute("class", "button");
+  //   answer2.setAttribute("class", "button");
+  //   answer3.setAttribute("class", "button");
+  //   answer4.setAttribute("class", "button");
+
+  //   question1.textContent = "Insert real question here.";
+  //   answer1.textContent = "Insert real answer here";
+  //   answer2.textContent = "Insert real answer here";
+  //   answer3.textContent = "Insert real answer here";
+  //   answer4.textContent = "Insert real answer here";
+
+  //   document.body.appendChild(question1);
+  //   question1.appendChild(answers);
+  //   answers.appendChild(answer1);
+  //   answers.appendChild(answer2);
+  //   answers.appendChild(answer3);
+  //   answers.appendChild(answer4);
+  // }
+  //**????CAN YOU USE A JAVASCRIPT-CREATED BUTTON AS A CLICKABLE EVENT LISTENER????**
+  startButton.addEventListener("click", firstQuestion);
 }
+
 landingPage();
 //Acceptance Criteria:
 // WHEN I click the start button
@@ -87,3 +179,5 @@ landingPage();
 // When the user clicks on the "View High Scores" tab, they will be shown the last 5 highest scores and the user's initials.
 // ((To retrieve local storage data, use `localStorage.getItem("name") OR))
 // ((- var lastScore = JSON.parse(localStorage.getItem())
+
+// ((use .setAttr("data-whatever", index ))
