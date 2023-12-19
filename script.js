@@ -29,24 +29,24 @@ answerClick.addEventListener("click", function (event) {
 });
 let questions = [
   {
-    question: "insert question here",
-    answers: ["a1", "a2", "a3", "a4"],
+    question: "What symbol indicates a class selector in CSS?",
+    answers: ["#", ".", "$", "*"],
     correctA: 2,
   },
   {
-    question: "insert question here",
-    answers: ["a1", "a2", "stinky", "a4"],
-    correctA: 2,
+    question: "What symbol indicates an id selector in CSS",
+    answers: ["#", ".", "stinky", "5"],
+    correctA: 1,
   },
   {
-    question: "insert question here",
-    answers: ["a1", "a2", "waffles", "a4"],
-    correctA: 2,
+    question: "What kind of data type is 54 ?",
+    answers: ["number", "boolean", "array", "string"],
+    correctA: 1,
   },
   {
-    question: "insert question here",
-    answers: ["a1", "a2", "pumpkin", "a4"],
-    correctA: 2,
+    question: "What does 'boolean' mean?",
+    answers: ["yes/no", "loop", "skinny ghost", "true/false"],
+    correctA: 4,
   },
 ];
 let qIndex = -1;
