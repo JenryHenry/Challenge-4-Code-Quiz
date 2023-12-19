@@ -11,6 +11,8 @@ questionPage.style.display = "none";
 scorePage.style.display = "none";
 let answerClick = document.getElementById("questions");
 let score = 0;
+let initials = document.querySelector("#initialsInput");
+let submitEl = document.querySelector("#submit");
 answerClick.addEventListener("click", function (event) {
   let element = event.target;
   if (element.matches("li")) {
@@ -73,8 +75,21 @@ function startQuiz() {
   startButton.addEventListener("click", RenderNextQuestion);
 }
 
-startQuiz();
+function handleFormSubmit(event) {
+  event.preventDefault();
+  let initialsEntered = initials.value;
+  let lastScore = {
+    user: initialsEntered,
+    userScore: score + "/" + questions.length,
+  };
+  localStorage.setItem("lastScore", JSON.stringify(lastScore));
+  scorePage.style.display = "none";
+  landingPage.style.display = "block";
+  console.log(initialsEntered);
+}
 
+startQuiz();
+submitEl.addEventListener("click", handleFormSubmit);
 //Acceptance Criteria:
 // WHEN I click the start button
 // THEN a timer starts and I am presented with a question
