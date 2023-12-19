@@ -4,6 +4,27 @@
 //   question1.textContent = "Insert real question here.";
 //   document.body.appendChild(question1);
 // }
+let landingPage = document.getElementById("landing");
+let questionPage = document.getElementById("questions");
+let scorePage = document.getElementById("score");
+questionPage.style.display = "none";
+scorePage.style.display = "none";
+let answerClick = document.getElementById("questions");
+let score = 0;
+answerClick.addEventListener("click", function (event) {
+  let element = event.target;
+  if (element.matches("li")) {
+    //use loose equality
+    if (element.dataset.index == questions[qIndex].correctA) {
+      score++;
+    }
+    if (qIndex < 3) {
+      RenderNextQuestion();
+    } else if (qIndex == 3) {
+      renderScorePage();
+    }
+  }
+});
 let questions = [
   {
     question: "insert question here",
@@ -12,100 +33,48 @@ let questions = [
   },
   {
     question: "insert question here",
-    answers: ["a1", "a2", "a3", "a4"],
+    answers: ["a1", "a2", "stinky", "a4"],
     correctA: 2,
   },
   {
     question: "insert question here",
-    answers: ["a1", "a2", "a3", "a4"],
+    answers: ["a1", "a2", "waffles", "a4"],
     correctA: 2,
   },
   {
     question: "insert question here",
-    answers: ["a1", "a2", "a3", "a4"],
+    answers: ["a1", "a2", "pumpkin", "a4"],
     correctA: 2,
   },
 ];
-let qIndex = 0;
-function firstQuestion(event) {
-  event.stopPropagation();
-  let question1 = document.createElement("h1");
-  let answers = document.createElement("ol");
-  let answer1 = document.createElement("li");
-  let answer2 = document.createElement("li");
-  let answer3 = document.createElement("li");
-  let answer4 = document.createElement("li");
-
-  answer1.setAttribute("class", "button");
-  answer2.setAttribute("class", "button");
-  answer3.setAttribute("class", "button");
-  answer4.setAttribute("class", "button");
-
-  question1.textContent = "Insert real question here.";
-  answer1.textContent = "Insert real answer here";
-  answer2.textContent = "Insert real answer here";
-  answer3.textContent = "Insert real answer here";
-  answer4.textContent = "Insert real answer here";
-
-  document.body.appendChild(question1);
-  question1.appendChild(answers);
-  answers.appendChild(answer1);
-  answers.appendChild(answer2);
-  answers.appendChild(answer3);
-  answers.appendChild(answer4);
+let qIndex = -1;
+function RenderNextQuestion() {
+  // Need parameter for previous question right/wrong to display
+  landingPage.style.display = "none";
+  questionPage.style.display = "block";
+  qIndex++;
+  document.getElementById("qText").textContent = questions[qIndex].question;
+  document.getElementById("ans1").textContent = questions[qIndex].answers[0];
+  document.getElementById("ans2").textContent = questions[qIndex].answers[1];
+  document.getElementById("ans3").textContent = questions[qIndex].answers[2];
+  document.getElementById("ans4").textContent = questions[qIndex].answers[3];
 }
-
-function landingPage() {
+function renderScorePage() {
+  questionPage.style.display = "none";
+  scorePage.style.display = "block";
+  document.getElementById("realScore").textContent = score;
+  document.getElementById("qTotal").textContent = questions.length;
+  console.log(score);
+}
+function startQuiz() {
   //create document elements
-  var quizTitle = document.createElement("h1");
-  var description = document.createElement("p");
-  var highScores = document.createElement("p");
-  var startButton = document.createElement("button");
-
-  // add element text content
-  highScores.textContent = "High Scores";
-  description.textContent = "blahblahblah";
-  quizTitle.textContent = "Coding Quiz Challenge";
-  startButton.textContent = "Start Quiz";
-
-  // append elements to body
-  document.body.appendChild(highScores);
-  document.body.appendChild(quizTitle);
-  quizTitle.appendChild(description);
-  description.appendChild(startButton);
-
-  // function firstQuestion(event) {
-  //   // event.stopPropagation();
-  //   let question1 = document.createElement("h1");
-  //   let answers = document.createElement("ol");
-  //   let answer1 = document.createElement("li");
-  //   let answer2 = document.createElement("li");
-  //   let answer3 = document.createElement("li");
-  //   let answer4 = document.createElement("li");
-
-  //   answer1.setAttribute("class", "button");
-  //   answer2.setAttribute("class", "button");
-  //   answer3.setAttribute("class", "button");
-  //   answer4.setAttribute("class", "button");
-
-  //   question1.textContent = "Insert real question here.";
-  //   answer1.textContent = "Insert real answer here";
-  //   answer2.textContent = "Insert real answer here";
-  //   answer3.textContent = "Insert real answer here";
-  //   answer4.textContent = "Insert real answer here";
-
-  //   document.body.appendChild(question1);
-  //   question1.appendChild(answers);
-  //   answers.appendChild(answer1);
-  //   answers.appendChild(answer2);
-  //   answers.appendChild(answer3);
-  //   answers.appendChild(answer4);
-  // }
-  //**????CAN YOU USE A JAVASCRIPT-CREATED BUTTON AS A CLICKABLE EVENT LISTENER????**
-  startButton.addEventListener("click", firstQuestion);
+  let startButton = document.getElementById("start");
+  score = 0;
+  startButton.addEventListener("click", RenderNextQuestion);
 }
 
-landingPage();
+startQuiz();
+
 //Acceptance Criteria:
 // WHEN I click the start button
 // THEN a timer starts and I am presented with a question
