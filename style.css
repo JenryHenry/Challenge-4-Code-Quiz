@@ -1,0 +1,30 @@
+nav {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: center;
+  justify-content: space-around;
+  background-color: rgb(33, 33, 33);
+}
+nav p {
+  display: inline;
+  font-size: 20px;
+  color: aquamarine;
+}
+#timeRemaining {
+  color: red;
+}
+body div {
+  width: 700px;
+  margin: auto;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  align-content: center;
+}
+section {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  align-content: center;
+}

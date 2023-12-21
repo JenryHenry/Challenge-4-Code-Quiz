@@ -7,6 +7,7 @@
       content="width=device-width,
      initial-scale=1.0"
     />
+    <link rel="stylesheet" href="./style.css" />
     <title>Document</title>
   </head>
   <body>
@@ -14,34 +15,35 @@
       <p>View High Scores</p>
       <p>Time: <span id="timeRemaining"></span></p>
     </nav>
+    <div>
+      <section id="landing">
+        <h1>Coding Quiz Challenge</h1>
+        <p>Insert Description Here</p>
+        <button id="start">Start Quiz</button>
+      </section>
 
-    <section id="landing">
-      <h1>Coding Quiz Challenge</h1>
-      <p>Insert Description Here</p>
-      <button id="start">Start Quiz</button>
-    </section>
+      <section id="questions">
+        <h1 id="qText"></h1>
+        <ol>
+          <li data-index="0" id="ans1"></li>
+          <li data-index="1" id="ans2"></li>
+          <li data-index="2" id="ans3"></li>
+          <li data-index="3" id="ans4"></li>
+        </ol>
+      </section>
 
-    <section id="questions">
-      <h1 id="qText"></h1>
-      <ol>
-        <li data-index="0" id="ans1"></li>
-        <li data-index="1" id="ans2"></li>
-        <li data-index="2" id="ans3"></li>
-        <li data-index="3" id="ans4"></li>
-      </ol>
-    </section>
-
-    <section id="score">
-      <h1>That's It!</h1>
-      <p>
-        Your score is <span id="realScore"></span> out of
-        <span id="qTotal"></span>!
-      </p>
-      <form>
-        <input placeholder="Enter Your Initials" id="initialsInput" />
-        <button id="submit">Submit</button>
-      </form>
-    </section>
+      <section id="score">
+        <h1>That's It!</h1>
+        <p>
+          Your score is <span id="realScore"></span> out of
+          <span id="qTotal"></span>!
+        </p>
+        <form>
+          <input placeholder="Enter Your Initials" id="initialsInput" />
+          <button id="submit">Submit</button>
+        </form>
+      </section>
+    </div>
     <script src="./script.js"></script>
   </body>
 </html>

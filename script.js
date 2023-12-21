@@ -13,20 +13,9 @@ let answerClick = document.getElementById("questions");
 let score = 0;
 let initials = document.querySelector("#initialsInput");
 let submitEl = document.querySelector("#submit");
-answerClick.addEventListener("click", function (event) {
-  let element = event.target;
-  if (element.matches("li")) {
-    //use loose equality
-    if (element.dataset.index == questions[qIndex].correctA) {
-      score++;
-    }
-    if (qIndex < 3) {
-      RenderNextQuestion();
-    } else if (qIndex == 3) {
-      renderScorePage();
-    }
-  }
-});
+var secondsLeft = 60;
+let timer = document.getElementById("timeRemaining");
+var timerInterval;
 let questions = [
   {
     question: "What symbol indicates a class selector in CSS?",
@@ -49,7 +38,39 @@ let questions = [
     correctA: 3,
   },
 ];
+
 let qIndex = -1;
+function setTime() {
+  // Sets interval in variable
+  timerInterval = setInterval(function () {
+    secondsLeft--;
+    timer.textContent = secondsLeft;
+
+    if (secondsLeft === 0) {
+      // Stops execution of action at set interval
+      clearInterval(timerInterval);
+      renderScorePage();
+    }
+  }, 1000);
+}
+answerClick.addEventListener("click", function (event) {
+  let element = event.target;
+  if (element.matches("li")) {
+    //use loose equality
+    if (element.dataset.index == questions[qIndex].correctA) {
+      score++;
+    } else {
+      secondsLeft -= 5;
+    }
+    if (qIndex < questions.length - 1) {
+      RenderNextQuestion();
+    } else {
+      clearInterval(timerInterval);
+      renderScorePage();
+    }
+  }
+});
+
 function RenderNextQuestion() {
   // Need parameter for previous question right/wrong to display
   landingPage.style.display = "none";
@@ -73,6 +94,7 @@ function startQuiz() {
   let startButton = document.getElementById("start");
   score = 0;
   startButton.addEventListener("click", RenderNextQuestion);
+  setTime();
 }
 
 function handleFormSubmit(event) {
@@ -128,7 +150,7 @@ submitEl.addEventListener("click", handleFormSubmit);
 // If a question is answered incorrectly, an amount of time will be deducted from the time remaining.
 // If the timer reaches 0, then the quiz will stop short and immediately calculate the results, bringing up the "Quiz Results" page.
 
-//var secondsLeft = 10;
+// var secondsLeft = 10;
 // function setTime() {
 //   // Sets interval in variable
 //   var timerInterval = setInterval(function() {
