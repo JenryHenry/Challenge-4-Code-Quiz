@@ -94,7 +94,7 @@ function startQuiz() {
   let startButton = document.getElementById("start");
   score = 0;
   startButton.addEventListener("click", RenderNextQuestion);
-  setTime();
+  startButton.addEventListener("click", setTime);
 }
 
 function handleFormSubmit(event) {
