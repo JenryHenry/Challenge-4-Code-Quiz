@@ -1,21 +1,22 @@
-//landing page
-// function firstQuestion() {
-//   let question1 = document.createElement("h1");
-//   question1.textContent = "Insert real question here.";
-//   document.body.appendChild(question1);
-// }
+// define variables
 let landingPage = document.getElementById("landing");
 let questionPage = document.getElementById("questions");
 let scorePage = document.getElementById("score");
-questionPage.style.display = "none";
-scorePage.style.display = "none";
 let answerClick = document.getElementById("questions");
+let aResponse1 = document.getElementById("correct");
+let aResponse2 = document.getElementById("incorrect");
 let score = 0;
 let initials = document.querySelector("#initialsInput");
 let submitEl = document.querySelector("#submit");
-var secondsLeft = 60;
+let secondsLeft = 60;
 let timer = document.getElementById("timeRemaining");
-var timerInterval;
+let timerInterval;
+let qIndex = -1;
+let prevAns;
+questionPage.style.display = "none";
+scorePage.style.display = "none";
+aResponse1.style.display = "none";
+aResponse2.style.display = "none";
 let questions = [
   {
     question: "What symbol indicates a class selector in CSS?",
@@ -39,15 +40,16 @@ let questions = [
   },
 ];
 
-let qIndex = -1;
+function resetTimer() {
+  secondsLeft = 60;
+}
 function setTime() {
-  // Sets interval in variable
   timerInterval = setInterval(function () {
     secondsLeft--;
     timer.textContent = secondsLeft;
 
     if (secondsLeft === 0) {
-      // Stops execution of action at set interval
+      // Stops execution of once timer reaches 0
       clearInterval(timerInterval);
       renderScorePage();
     }
@@ -59,8 +61,12 @@ answerClick.addEventListener("click", function (event) {
     //use loose equality
     if (element.dataset.index == questions[qIndex].correctA) {
       score++;
+      aResponse1.style.display = "block";
+      aResponse2.style.display = "none";
     } else {
       secondsLeft -= 5;
+      aResponse2.style.display = "block";
+      aResponse1.style.display = "none";
     }
     if (qIndex < questions.length - 1) {
       RenderNextQuestion();
@@ -73,6 +79,9 @@ answerClick.addEventListener("click", function (event) {
 
 function RenderNextQuestion() {
   // Need parameter for previous question right/wrong to display
+  if (qIndex > 4) {
+    qIndex = -1;
+  }
   landingPage.style.display = "none";
   questionPage.style.display = "block";
   qIndex++;
@@ -90,15 +99,15 @@ function renderScorePage() {
   console.log(score);
 }
 function startQuiz() {
-  //create document elements
+  //create document elements;
   let startButton = document.getElementById("start");
   score = 0;
   startButton.addEventListener("click", RenderNextQuestion);
   startButton.addEventListener("click", setTime);
+  startButton.addEventListener("click", resetTimer);
 }
 
-function handleFormSubmit(event) {
-  event.preventDefault();
+function handleFormSubmit() {
   let initialsEntered = initials.value;
   let lastScore = {
     user: initialsEntered,
@@ -107,6 +116,8 @@ function handleFormSubmit(event) {
   localStorage.setItem("lastScore", JSON.stringify(lastScore));
   scorePage.style.display = "none";
   landingPage.style.display = "block";
+  aResponse1.style.display = "none";
+  aResponse2.style.display = "none";
   console.log(initialsEntered);
 }
 
