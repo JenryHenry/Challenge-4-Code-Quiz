@@ -18,7 +18,12 @@
     <div>
       <section id="landing">
         <h1>Coding Quiz Challenge</h1>
-        <p>Insert Description Here</p>
+        <p>
+          This quiz will test your knowledge on various HTML, CSS, and
+          Javascript topics. You have one minute to complete the quiz. There are
+          <span id="description">4</span> questions to answer. Each incorrect
+          answer will deduct 5 seconds from the timer. Good Luck!
+        </p>
         <button id="start">Start Quiz</button>
       </section>
 
@@ -31,12 +36,12 @@
           <li data-index="3" id="ans4"></li>
         </ol>
       </section>
-      <section>
+      <section id="answerResponse">
         <p id="correct">Correct!</p>
         <p id="incorrect">Incorrect</p>
       </section>
       <section id="score">
-        <h1>That's It!</h1>
+        <h1>Quiz Complete!</h1>
         <p>
           Your score is <span id="realScore"></span> out of
           <span id="qTotal"></span>!

@@ -38,8 +38,14 @@ let questions = [
     answers: ["yes/no", "loop", "skinny ghost", "true/false"],
     correctA: 3,
   },
+  {
+    question: "What scope does a variable defined inside a function have?",
+    answers: ["large", "global", "close", "local"],
+    correctA: 3,
+  },
 ];
-
+let lengthDescription = document.getElementById("description");
+lengthDescription.textContent = questions.length;
 function resetTimer() {
   secondsLeft = 60;
 }

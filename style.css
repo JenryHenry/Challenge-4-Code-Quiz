@@ -8,23 +8,80 @@ nav {
 }
 nav p {
   display: inline;
-  font-size: 20px;
+  font-size: 25px;
   color: aquamarine;
 }
 #timeRemaining {
   color: red;
 }
 body div {
-  width: 700px;
+  width: 35%;
   margin: auto;
   display: flex;
   flex-wrap: wrap;
   flex-direction: column;
   align-content: center;
 }
+#landing {
+  display: flex;
+  justify-content: center;
+}
+
+#landing p {
+  font-size: larger;
+  font-weight: 400;
+  margin-bottom: 8%;
+}
+
+#landing button {
+  height: 40px;
+}
+#start {
+  background-color: #f47d75;
+  color: azure;
+  font-size: large;
+  border-radius: 15px;
+}
 section {
   display: flex;
   flex-wrap: wrap;
   flex-direction: column;
   align-content: center;
+}
+
+#landing h1 {
+  font-size: 300%;
+}
+#qText {
+  font-size: 200%;
+}
+li {
+  border-radius: 20px;
+  padding: 15px;
+  margin: 10px;
+  border-style: solid;
+  border-color: black;
+  background-color: #f47d75;
+  font-weight: bold;
+  font-size: 120%;
+}
+
+#score h1 {
+  font-size: 250%;
+}
+
+#score p {
+  font-size: 150%;
+}
+
+form input {
+  height: 20%;
+}
+form button {
+  size: 200%;
+}
+
+#answerResponse {
+  font-size: 150%;
+  text-decoration: underline;
 }
